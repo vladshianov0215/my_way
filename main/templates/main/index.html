@@ -1,11 +1,27 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-INDEX TITLE
+{{title}}
 {% endblock %}
 
 
 {% block content %}
 <h1>INDEX content</h1>
 <p>INDEX content</p>
+
+{% if  tasks %}
+
+{% for el in tasks %}
+<div class="alert alert-warning mt-2">
+    <h3> {{el.title}}</h3>
+    <p>  {{el.task}} </p>
+</div>
+
+{% endfor %}
+
+{% else %}
+<p> EMPTY </p>
+
+{% endif %}
+
 {% endblock %}

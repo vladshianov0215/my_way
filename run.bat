@@ -1,5 +1,7 @@
 rem django-admin startproject project_name
 
+rem python manage.py createsuperuser / for make admin
+
 call python manage.py runserver
 
 rem for make new application run command bellow and add app name to settings.py  INSTALLED_APPS section
@@ -14,3 +16,10 @@ rem <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/d
 
 rem https://getbootstrap.com/
 rem https://getbootstrap.com/docs/5.0/examples/
+
+
+rem migrationn - create database tables
+rem python manage.py makemigrations
+rem python manage.py migrate
+
+
