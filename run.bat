@@ -27,3 +27,9 @@ rem 'forms.py'
 
 
 rem https://www.youtube.com/watch?v=6K83dgjkQNw&ab_channel=%D0%93%D0%BE%D1%88%D0%B0%D0%94%D1%83%D0%B4%D0%B0%D1%80%D1%8C
+
+rem ----------------------------
+rem make folder with nem 'static' and make folders css and js inside
+rem add line "STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]" to settings.py
+rem use it {% load static %} <script src="{% static '/js/index.js' %}"></script>
+

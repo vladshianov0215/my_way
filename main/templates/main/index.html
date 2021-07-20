@@ -1,27 +1,51 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %}
 {{title}}
 {% endblock %}
 
+{% block head_block %}
+
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 150; bottom: 0; width: 80%; height: 50%; }
+</style>
+
+<!--link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" /-->
+<!--script src="{% static '/js/index.js' %}"></script-->
+
+{% endblock %}
 
 {% block content %}
-<h1>INDEX content</h1>
-<p>INDEX content</p>
+    <h1>INDEX content</h1>
 
-{% if  tasks %}
+    <h3>My MAP BOX Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
 
-{% for el in tasks %}
-<div class="alert alert-warning mt-2">
-    <h3> {{el.title}}</h3>
-    <p>  {{el.task}} </p>
-</div>
+    <script>
+        mapboxgl.accessToken = '{{map_box_token}}'
+        var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+        });
+    </script>
 
-{% endfor %}
-
-{% else %}
-<p> EMPTY </p>
-
-{% endif %}
+    {% if  tasks %}
+        {% for el in tasks %}
+        <div class="alert alert-warning mt-2">
+            <h3> {{el.title}}</h3>
+            <p>  {{el.task}} </p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p> EMPTY </p>
+    {% endif %}
 
 {% endblock %}

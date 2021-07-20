@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from .models import Task
 from .forms import TaskForm
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -10,7 +11,7 @@ def index(request):
     #Task.objects.order_by('-id')# 'id' '-id' [:1] only one  'title'
     #Task.objects.all()
     tasks  = Task.objects.order_by('-id')#new news will be upper
-    return render(request, 'main/index.html', {'title':'index_list_name', 'tasks':tasks} )
+    return render(request, 'main/index.html', {'title':'index_list_name', 'tasks':tasks, 'map_box_token': settings.MAP_BOX_TOKEN} )
 
 def about(request):
     return render(request, 'main/about.html')
